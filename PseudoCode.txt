@@ -1,0 +1,91 @@
+
+
+NOTE: Create function to send input into stack
+
+{
+;Atalig: Find the minimum and maximum of the grades
+
+Access element from top of stack
+Set element as MIN (Use some register)
+
+for i = 2 to stack size
+  if MIN - Element i is positive
+    then set Element i as MIN (BRp)
+
+Access element from top of stack
+Set element as MAX (Use some register)
+
+for i = 2 to stack size 
+  if MAX - Element i is negative
+    then set Element i as MAX(BRn)
+}
+
+{
+;Atalig: Find the average of the grades (decimal calculation)
+
+Set some register as ACC
+for i in the stack
+  ACC = ACC + Element if
+
+Call Division function for Q = ACC / stack size (first 2-3 digits of quotient)
+
+If remainder R is zero
+  set Q* as 00
+  return
+
+Take remainder R, call multiplier function for R* times 100
+
+Call Division function to divide R* by stack size again (Output is Q* 2 digits of quotient after decimal)
+
+Take second remainder R**
+
+if stack size is even (Check using Division function)
+  then set variable p = (D / 2) - 1
+else
+  then set variable p = (D - 1) / 2
+
+if R** - p is positive
+  Add 1 to Q* (round up)
+
+Output Q and Q*
+}
+
+{
+;Atalig: Find letter grade after computing average 
+;Note: We should only use the integer part of the average
+
+if AVG - 90 positive or zero
+  Return Letter Grade 'A'
+else if AVG - 80 positive or zero
+  Return Letter Grade 'B'
+else if AVG - 70 positive or zero
+  Return Letter Grade 'C'
+else if AVG - 60 positive or zero
+  Return Letter Grade 'D'
+else 
+  Return Letter Grade 'F'
+}
+
+{
+;Atalig: Fast multiplication
+;Note: Only multiply positive numbers
+
+Set B = 1 as bit that we are multiplying at
+Set S as condition to skip multiplication
+Set Y as multiplicand
+Set X as multiplier
+Set A as accumulator
+Set C = 15 as counter
+
+From 1 to C
+  S = Y AND B   ;Check if Bit is equal to zero
+  If S is zero, skip to ISZERO
+  A = A + X
+  ISZERO
+    B = B + B (2B, which increases to next bit)
+    X = X + X ( multiply X by 10[2bit])
+}
+
+{
+  ;Atalig: Division
+}
