@@ -1,6 +1,117 @@
+Do while loop will have the program run as many times as the user wishes. 
+Do{
+Declare origin
+*clear all registers!
+
+JSR DIS 		;will jump to subroutine and print the user display menu. 
+DO while loop2 {	; will be used to place user inputs into an array
+  inputloop for = 5{
+	cin ; User inputs their 5 grades.
+	}
+  
+ASCII TO DECIMAL 
+  Note: have to create another subroutine to get from ASCII to decimal before sending to Division department.
+  For each digit input for one assignment
+    ASCII convert digit to Decimal
+    Push digit into digit stack
+
+  Take some accumulator A
+  For each digit in stack (head to bottom)
+    Get 10 to the power of the stack index (loop multiplication)
+    Add (digit * 10^index) to A
+
+  #
+  Alternatively:
+  add first digit to A
+  multiply second digit by 10, add to A
+  add 100 if third digit is 1, add to A
+
+  #
+
+  Store A in grade stack
+
+JSR MinMax 		;send array information to do the calculations.
+JSR AVG
+END_DO_WHILE_LOOP
+JSR RES ; will display the result of the inputs for the user.
+Gather userinput if they want to run the program again will run on do while loop
+}while(userinput == 1)
+
+JSR DIS			;Display Menu system for user
+
+			;Get both results from the divsion portion and place in result 1 and result 2
+			;result 1 will be the whole number and result 2 will be the decimal.
+
+JSR RES			;Displays the results for the user 
+{
+print the users input that they input to show them the before and after.
+print "This is your average result" Result 1 "." Result 2 ; 
+Print "The letter grade you received is: " Letter grade ;
+}
 
 
+;Atalig: Find letter grade after computing average 
+;Note: We should only use the integer part of the average
+
+if AVG - 90 positive or zero
+  Return Letter Grade 'A'
+else if AVG - 80 positive or zero
+  Return Letter Grade 'B'
+else if AVG - 70 positive or zero
+  Return Letter Grade 'C'
+else if AVG - 60 positive or zero
+  Return Letter Grade 'D'
+else 
+  Return Letter Grade 'F'
+}
+
+
+Array .BLKW #3 ;array that will be used for gather user inputs	
+COUNTER .FILL#3 ;counter that will be used for the array do while loop
+
+
+
+
+
+
+;Nadja Hernandez
+First create stack 
+Stack function
+  Set stack size = 5
+  Set stackptr to the top of the stack
+  Set stack in location
+
+Push function
+update the stack size
+check the number of elements in the stack cannot go over 5:
+if amount of elements are 5
+  stop adding to the stack and move on the jason's part
+
+else
+  pop new element on top of the stack 
+  update the stackptr to now point to the newest and highest element in the stack
+  update the number of elements in the stack
+
+Pop function 
+check if the stack is empty
+if stack is empty 
+  the function is over
+else 
+  pop element 
+  update stack size
+  update stackptr to point to the element one lower 
+  
 NOTE: Create function to send input into stack
+Atalig: Luis should be able to provide ascii converted values, so push is sufficient.
+
+
+
+
+
+
+
+
+
 
 {
 ;Atalig: Find the minimum and maximum of the grades
@@ -51,20 +162,7 @@ Output Q and Q*
 }
 
 {
-;Atalig: Find letter grade after computing average 
-;Note: We should only use the integer part of the average
 
-if AVG - 90 positive or zero
-  Return Letter Grade 'A'
-else if AVG - 80 positive or zero
-  Return Letter Grade 'B'
-else if AVG - 70 positive or zero
-  Return Letter Grade 'C'
-else if AVG - 60 positive or zero
-  Return Letter Grade 'D'
-else 
-  Return Letter Grade 'F'
-}
 
 {
 ;Atalig: Fast multiplication
@@ -88,4 +186,23 @@ From 1 to C
 
 {
   ;Atalig: Division
+
+  Take numerator N and denominator D
+  Let Q be quotient and R be remainder
+
+  intialize R with N
+
+  loop
+    R = R - D
+    if R is zero or negative, break
+    Add 1 to Q
+  loop
+
+  if R is zero
+    add 1 to quotient
+  else
+    R = R + D (make sure remainder is positive)
+
+  Return Q and R
+    
 }
