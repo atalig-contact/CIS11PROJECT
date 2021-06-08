@@ -54,8 +54,10 @@ Print "The letter grade you received is: " Letter grade ;
 ;Note: We should only use the integer part of the average
 
 if AVG - 90 positive or zero
+  BRn NEXT
   Return Letter Grade 'A'
-else if AVG - 80 positive or zero
+  BR SKIP to end
+NEXT if AVG - 80 positive or zero
   Return Letter Grade 'B'
 else if AVG - 70 positive or zero
   Return Letter Grade 'C'
@@ -63,6 +65,8 @@ else if AVG - 60 positive or zero
   Return Letter Grade 'D'
 else 
   Return Letter Grade 'F'
+
+SKIP
 }
 
 
