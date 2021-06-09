@@ -1,2 +1,0 @@
-;Atalig: NOTE TO LUIS. For calculating the grade average, we output two values to represent a decimal number. One value represents the digits before the decimal point
-; (2 to 3 digits), and the second value represents digits after the decimal point (2 digits). Keep this in mind while displaying output.
